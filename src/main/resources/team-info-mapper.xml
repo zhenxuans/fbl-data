@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="me.robbie.fbl.data.dao.TeamInfoMapper">
+    <select id="isTeamExisted" resultType="int">
+        select count(*) from team_info where team_id = #{team_id}
+    </select>
+    <insert id="newTeam">
+        insert into team_info(team_id,official_name,club_name,team_city,type,team_founded,sporttery_teamid,club_abbr_name,
+        team_pic,competition_name,competition_abbr_name,rank,win,draw,lose,coach) values (#{team_id},#{official_name},
+        #{club_name},#{team_city},#{type},#{team_founded},#{sporttery_teamid},#{club_abbr_name},#{team_pic},
+        #{competition_name},#{competition_abbr_name},#{rank},#{win},#{draw},#{lose},#{coach})
+    </insert>
+    <update id="updateTeam">
+        update team_info set
+          competition_name=#{competition_name},
+          competition_abbr_name=#{competition_abbr_name},
+          rank=#{rank},
+          win=#{win},
+          draw=#{draw},
+          lose=#{lose},
+          coach=#{coach}
+        where team_id=#{team_id}
+    </update>
+</mapper>

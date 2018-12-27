@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="me.robbie.fbl.data.dao.TeamMatchMapper">
+    <select id="isMatchExisted" resultType="int">
+        select count(*) from team_match_data where match_id = #{match_id}
+    </select>
+    <insert id="newMatch">
+        insert into team_match_data(match_id,date_cn,time_cn,gameweek,sporttery_matchid,flag_reverse,l_id_dc,s_id_dc,
+        r_id_dc,g_id_dc,h_id_dc,a_id_dc,l_cn,l_cn_abbr,h_cn,h_cn_abbr,a_cn,a_cn_abbr,is_home,half_score,final_score,
+        team_rs,h,d,a) values (#{match_id},#{date_cn},#{time_cn},#{gameweek},#{sporttery_matchid},#{flag_reverse},#{l_id_dc},
+        #{s_id_dc},#{r_id_dc},#{g_id_dc},#{h_id_dc},#{a_id_dc},#{l_cn},#{l_cn_abbr},#{h_cn},#{h_cn_abbr},#{a_cn},#{a_cn_abbr},
+        #{is_home},#{half},#{final_score},#{team_rs},#{h},#{d},#{a})
+    </insert>
+
+    <update id="updateMatch">
+        update team_match_data set
+          half_score = #{half},
+          final_score = #{final_score},
+          team_rs = #{team_rs},
+          h=#{h},
+          d=#{d},
+          a=#{a}
+        where match_id = #{match_id}
+    </update>
+</mapper>

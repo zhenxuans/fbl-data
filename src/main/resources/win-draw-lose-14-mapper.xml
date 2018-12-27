@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="me.robbie.fbl.data.dao.Windrawlose14Mapper">
+    <select id="isMatchExisted" resultType="int">
+        select count(*) from win_draw_lose_14 where mid = #{mid}
+    </select>
+    <insert id="newMatch14">
+        insert into win_draw_lose_14(league,a_cn,h_cn,date,result,prize_str,time,mid,a,h,d,full,num) values (#{league},#{a_cn},
+        #{h_cn},#{date},#{result},#{prize_str},#{time},#{mid},#{a},
+        #{h},#{d},#{full},#{num})
+    </insert>
+    <update id="updateMatch14">
+        update win_draw_lose_14 set
+          a=#{a},
+          h=#{h},
+          d=#{d},
+          full=#{full},
+          result=#{result},
+          prize_str=#{prize_str}
+        where mid=#{mid}
+    </update>
+</mapper>
